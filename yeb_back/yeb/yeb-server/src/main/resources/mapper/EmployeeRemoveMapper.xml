@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.oc.server.mapper.EmployeeRemoveMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.oc.server.pojo.EmployeeRemove">
+        <id column="id" property="id" />
+        <result column="eid" property="eid" />
+        <result column="afterDepId" property="afterDepId" />
+        <result column="afterJobId" property="afterJobId" />
+        <result column="removeDate" property="removeDate" />
+        <result column="reason" property="reason" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, eid, afterDepId, afterJobId, removeDate, reason, remark
+    </sql>
+    <select id="getRemoveList" resultType="java.lang.Integer">
+        SELECT
+            id
+        FROM
+            t_employee_remove
+
+
+
+    </select>
+    <select id="getRemove" resultType="cn.oc.server.pojo.EmployeeRemove">
+        SELECT
+            er.*,
+            em.`name`
+        FROM
+            t_employee_remove AS er
+                INNER JOIN
+            t_employee AS em
+            ON
+                er.eid = em.id
+        WHERE
+            er.eid = #{id}
+
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+server:
+  # 端口
+  port: 8082
+spring:
+  # 邮件配置
+  mail:
+    # 邮件服务器地址
+    host: smtp.qq.com
+    # 协议
+    protocol: smtp
+    # 编码格式
+    default-encoding: utf-8
+    # 授权码（在邮箱开通服务时获取）
+    password: lbtqgqcalrbhcbgh
+    # 发送者邮箱地址
+    username: aran_long@qq.com
+    # 端口（不同邮箱端口号不同）
+    port: 25
+
+  # rabbitmq配置
+  rabbitmq:
+    # 用户名
+    username: root
+    # 密码
+    password: 123
+    # 服务器地址
+    host: 192.168.140.1
+    # 端口
+    port: 5672
+    listener:
+      simple:
+        acknowledge-mode: manual  # 手动确认
+    # 消息失败回调
+    publisher-returns: true
+    # 消息确认回调
+    publisher-confirm-type: correlated
+
+  redis:
+    #超时时间
+    timeout: 10000ms
+    #服务器端口
+    port: 6379
+    #服务器地址
+    host: 127.0.0.1
+    database: 0
+    lettuce:
+      pool:
+        #最大连接数
+        max-active: 1024
+        #最大等待时间
+        max-wait: 10000ms
+        #最小空闲连接数
+        max-idle: 200
+        #最小空闲连接数
+        min-idle: 5
